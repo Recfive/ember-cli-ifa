@@ -1,4 +1,4 @@
-/* global window, __assetMapFilename__ */
+/* global window */
 import RSVP from 'rsvp';
 import $ from 'jquery';
 import AssetMap from '../services/asset-map';
@@ -8,7 +8,7 @@ export function initialize(app) {
 
   let assetMapFile = window && window.__assetMapFilename__;
 
-  if (!assetMapFile) {
+  if (!assetMapFile || assetMapFile.match(/__asset_map_placeholder__/)) {
     app.register('service:asset-map', AssetMap);
     app.advanceReadiness();
     return;

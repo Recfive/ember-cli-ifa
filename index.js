@@ -35,7 +35,12 @@ module.exports = {
     // Prepend the URL of the assetMap with the location defined in fingerprint
     // options.
     if (this.app && this.app.options && this.app.options.fingerprint) {
-      fingerprintPrepend = this.app.options.fingerprint.prepend;
+      if (this.app.options.fingerprint.prependWithRoot) {
+        fingerprintPrepend = this.app.options.fingerprint.prependWithRoot;
+      }
+      else {
+        fingerprintPrepend = this.app.options.fingerprint.prepend;
+      }
     }
 
     if (assetFileName) {
