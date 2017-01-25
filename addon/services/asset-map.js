@@ -18,6 +18,6 @@ export default Ember.Service.extend({
     const enabled = this.get('enabled');
     const assetName = enabled ? map[name] : name;
 
-    return `${prepend}${rootURL}${assetName}`.replace(/(\w)(\/\/+)/, '$1/');
+    return `${prepend}${rootURL}${assetName}`.replace(/(\w|^)(\/\/+)/, '$1/');
   }
 });
